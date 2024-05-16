@@ -1,0 +1,44 @@
+
+	hostname                 : s264051nj2sw23.S264051-AD01.corp
+	vcenter                  : 
+	vm_power_state           : 
+	hostname                 : s606286shvl005.ukslou1.savvis.net
+	vcenter                  : LO1VC04
+	vm_power_state           : poweredOff
+	hostname                 : s606286shvl006.ukslou1.savvis.net
+	vcenter                  : LO1VC04
+	vm_power_state           : poweredOff
+	hostname                 : s606286shvl004.ukslou1.savvis.net
+	vcenter                  : LO1VC04
+	vm_power_state           : poweredOff
+	hostname                 : s264051nj2sw18.S264051-AD01.corp
+	vcenter                  : 
+	vm_power_state           : 
+	hostname                 : s217124rgvw203.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOn
+	hostname                 : S217124RGVW073.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOff
+	hostname                 : S217124RGVW074.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOff
+	hostname                 : S217124RGVW075.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOff
+	hostname                 : s217124rgsw104.europe.EASYJET.LOCAL
+	vcenter                  : 
+	vm_power_state           : 
+	hostname                 : s217124rgvw917.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : suspended
+	hostname                 : S217124RGVW920.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOn
+	hostname                 : sl6sscvl01.it.savvis.net
+	vcenter                  : DC4VC04
+	vm_power_state           : poweredOff
+	hostname                 : S217124RGVW210.europe.EASYJET.LOCAL
+	vcenter                  : S217124RGVC01_NEW
+	vm_power_state           : poweredOn
+	hostname                 : S217124DKVW323.EASYJET.LO

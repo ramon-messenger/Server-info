@@ -1,3 +1,5 @@
+# version 1 , Main re-written and tested via co-pilot. 
+# Search function has no recomended improvements
 import datetime
 import json
 import requests
@@ -13,11 +15,19 @@ session = requests.session()
 session.proxies.update('')
 session.headers['x-api-key'] = apikey
 
-def search(param: str) -> None:
+def search(param: str, pattern_match: bool) -> None:
     """ Query Yoda API for server details """
-    url = f"{apiurl}/server01?search={param}"
+    
     try:
-        print(f"{str(datetime.datetime.now())[:-3]} - Searching for '{param}': ", end='')
+        if pattern_match :
+            print(f"{str(datetime.datetime.now())[:-3]} - Searching for Pattern '{param}'")
+            url = f"{apiurl}/server01?search={param}&exact=false"
+        else:
+            #print(f"{str(datetime.datetime.now())[:-3]} - Searching for '{param}", end='')
+            print(f"{str(datetime.datetime.now())[:-3]} - Searching for Exact Match '{param}'")
+            url = f"{apiurl}/server01?search={param}&exact=true"
+            
+        
         response = session.get(url, verify=False)
         if response.status_code == 404:
             print("Not found")
@@ -32,7 +42,7 @@ def search(param: str) -> None:
                     if k == 'hostname' or k == 'primary_ip_address':                
                         print(f"\t{k:<25}: {v}")
                 for k, v in result[count].items():
-                    if not k == 'hostname' or not k == 'primary_ip_address':
+                    if  k != 'hostname' and k != 'primary_ip_address':
                         print(f"\t{k:<25}: {v}")
     except requests.exceptions.HTTPError as http_err:
         print(f"HTTP ERROR occurred: {http_err}")
@@ -50,15 +60,18 @@ def search(param: str) -> None:
 
 
 def main(argv: list) -> str:
-    """ Iterate through search arguments """
+    """Iterate through search arguments."""
     if len(argv) > 1:
-        print(f"{str(datetime.datetime.now())[:-3]} - {len(argv) - 1} search arguments supplied")
-        for i in range(1, len(argv)):
-            search(argv[i])
-        print(f"{str(datetime.datetime.now())[:-3]} - Search complete")
+        print(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} - {len(argv) - 1} search arguments supplied")
+        pattern_match = "-p" in argv
+        for arg in argv[1:]:
+            if arg != "-p":
+                search(arg, pattern_match)
+        print(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} - Search complete")
     else:
         print("Search argument required")
-        exit(1)
+        sys.exit(1)
+
 
 
 

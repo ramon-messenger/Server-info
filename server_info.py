@@ -2,12 +2,11 @@ import datetime
 import json
 import requests
 import sys
+
 from urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)  # pylint: disable=no-member
 
-# apikey = 'a806335f8a074179bc6c93814592afb1'  # Temp key, expires 2024-04-18 12:00:26
-# apiurl = 'https://yodalab.savvis.net/api'
 apikey = '0d788c64f5b04d119e52b20e3079af99' # permenent Key : No expire Date
 apiurl = 'https://yoda.savvis.net/api'
 session = requests.session()
@@ -30,7 +29,11 @@ def search(param: str) -> None:
             for count in result:
                 print(f"{str(datetime.datetime.now())[:-3]} - Result {count}")
                 for k, v in result[count].items():
-                    print(f"\t{k}: {v}")
+                    if k == 'hostname' or k == 'primary_ip_address':                
+                        print(f"\t{k:<25}: {v}")
+                for k, v in result[count].items():
+                    if not k == 'hostname' or not k == 'primary_ip_address':
+                        print(f"\t{k:<25}: {v}")
     except requests.exceptions.HTTPError as http_err:
         print(f"HTTP ERROR occurred: {http_err}")
     except requests.exceptions.ConnectionError as conn_err:
